@@ -1,0 +1,34 @@
+#
+# COPYRIGHT Ericsson 2023
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: 2.0
+
+nmapConfig:
+  services:
+    - name: eric-oss-common-ci-pocs-test01
+      protocol:
+        - "tcp"
+        - "udp"
+        - "sctp"
+      additionalParams:
+        - "-v"
+        - "-p T:0-65535,U:1-1024,S:1-1024"
+        - "--stats-every 30"
+  enableUnicornscan:
+    additionalParams:
+      - "-r300"
+      - "-v"
+  reportDir : "nmap_reports"

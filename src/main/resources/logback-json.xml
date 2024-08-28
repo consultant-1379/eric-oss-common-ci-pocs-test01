@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ COPYRIGHT Ericsson 2021
+ ~
+ ~
+ ~
+ ~ The copyright to the computer program(s) herein is the property of
+ ~
+ ~ Ericsson Inc. The programs may be used and/or copied only with written
+ ~
+ ~ permission from Ericsson Inc. or in accordance with the terms and
+ ~
+ ~ conditions stipulated in the agreement/contract under which the
+ ~
+ ~ program(s) have been supplied.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<configuration>
+  <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+      <version>0.3.0</version>
+      <includeContext>false</includeContext>
+      <includeTags>false</includeTags>
+
+      <!-- Rename fields to follow ADP Schema 0.3.0
+           See: https://gerrit.ericsson.se/plugins/gitiles/bssf/adp-log/api/+/refs/heads/master/api-logging/src/main/json/logEvent.0.json
+      -->
+      <fieldNames>
+        <level>[ignore]</level>
+        <version>version</version>
+        <timestamp>timestamp</timestamp>
+        <thread>thread</thread>
+        <logger>logger</logger>
+        <levelValue>[ignore]</levelValue>
+      </fieldNames>
+
+      <!-- Add fields from MDC [user and correlation_id] -->
+      <includeMdcKeyName>user</includeMdcKeyName>
+      <provider class="net.logstash.logback.composite.loggingevent.LoggingEventPatternJsonProvider">
+        <pattern>
+          <omitEmptyFields>true</omitEmptyFields>
+          <pattern>
+            {
+            "service_id": "${SERVICE_ID:-unknown}",
+            "correlation_id": "%mdc{X-B3-TraceId}"
+            }
+          </pattern>
+        </pattern>
+      </provider>
+
+      <!-- Modify severity for matching it on ADP Schema 0.3.0 -->
+      <provider class="com.ericsson.oss.orchestration.eo.provider.ADPSeverityJsonProvider"/>
+
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="json"/>
+  </root>
+</configuration>
+

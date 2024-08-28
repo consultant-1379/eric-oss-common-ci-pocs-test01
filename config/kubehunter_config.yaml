@@ -1,0 +1,38 @@
+#
+# COPYRIGHT Ericsson 2021
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+Kubehunter:
+  Product: "eric-oss-common-ci-pocs-test01"
+  Product_contact: "PDLAEONICC@pdl.internal.ericsson.com"
+  RemoteScan: # Scans one or more specific IPs
+    Scan: True
+    NodeIp: all # Scan all, or any specific node IPs, comma separated Eg: "192.168.0.11,192.168.0.12"
+    KubeconfigFile: "config" # Your cluster config file for authentication
+  InterfaceScan: False # This will scan all of the machine's network interfaces
+  NetworkScanCIDR: # To scan a specific CIDR, Mention CIDR here : Eg: 192.168.0.0/24
+  CommonFields:
+    CheckAsPod: True # Set hunter as an insider pod
+    Statistics: True # Show hunting statistics
+    IncludePatchedVersions: False  # Don't skip patched versions when scanning
+    ActiveHunt: False # Active hunting can potentially do state-changing operations on the cluster, which could be harmful. In active hunt,the tool exploits vulnerabilities to explore for further vulnerabilities
+    ReportFormat: "plain" # Plain, yaml, json
+    DisplayReportConsole: True
+  CustomScan:
+    Scan: False # Enabling this will override all the above parameters/scans.
+                # To directly use the kube-hunter inside
+                # Enable only if you know the commands right.
+    Parameters: "-h" # Eg '--cidr 192.168.0.0/24'
+    DisplayReportConsole: False

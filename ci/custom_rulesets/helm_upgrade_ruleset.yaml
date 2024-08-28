@@ -1,0 +1,113 @@
+#
+# COPYRIGHT Ericsson 2023
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: 2.0
+
+description: "local_ruleset.yaml"
+
+docker-images:
+  - adp-helm-kubectl: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/bob-py3kubehelmbuilder:latest
+  - adp-release-auto: armdocker.rnd.ericsson.se/proj-adp-cicd-drop/bob-adp-release-auto:latest
+
+import:
+  common: ../common-properties.yaml
+
+properties:
+  - image-secret: armdocker
+  - helm-chart-repo-server-path: https://arm.seli.gic.ericsson.se/artifactory/proj-eric-oss
+  - helm-chart-drop-repo: ${helm-chart-repo-server-path}-drop-helm
+
+env:
+  - HOME
+  - PWD
+  - SELI_ARTIFACTORY_REPO_USER
+  - SELI_ARTIFACTORY_REPO_PASS
+  - COLLECT_LOGS_SCRIPT_LOCATION (default="https://arm.sero.gic.ericsson.se/artifactory/proj-ADP_GS_Support_FTP-generic-local/collect_ADP_logs")
+  - ENABLE_HELM_V3 (default=true)
+  - HELM_INSTALL_TIMEOUT (default=5m0s)
+  - HELM_RELEASE (default=${common.helm-chart-name}-release)
+  - K8S_NAMESPACE
+  - KUBECONFIG
+
+var:
+  - docker-config-basepath
+  - version
+
+# Rules to execute
+rules:
+  helm-upgrade:
+    - rule: helm-install-prep
+    - rule: helm-repo-update
+    - rule: helm-install
+
+  # Added for docker_flags_kube_config
+  helm-dry-run:
+    - rule: find-docker-config-basepath
+    - task: helm-dry-run
+      docker-image: adp-helm-kubectl
+      docker-flags: &docker_flags_kube_config
+        - "--env HOME=${env.HOME}"
+        - "--env K8S_NAMESPACE=${env.K8S_NAMESPACE}"
+        - "--env KUBECONFIG=${env.KUBECONFIG}"
+        - "--env ENABLE_HELM_V3"
+        - "--env COLLECT_LOGS_SCRIPT_LOCATION"
+        - "--volume ${env.PWD}:${env.PWD}"
+        - "--volume ${env.HOME}:${env.HOME}"
+        - "--volume ${env.KUBECONFIG}:${env.KUBECONFIG}"
+        - "--volume ${var.docker-config-basepath}:${var.docker-config-basepath}"
+      cmd: helm install .bob/${common.helm-chart-name}-internal/${common.helm-chart-name}-${var.version}.tgz
+        --dry-run
+        --debug
+        --generate-name > helm-install-dry-run.log
+
+  helm-repo-update:
+    - task: helm-repo-update
+      docker-image: adp-helm-kubectl
+      docker-flags: *docker_flags_kube_config
+      cmd:
+        - helm repo add ${common.helm-chart-name} ${helm-chart-drop-repo} --username ${env.SELI_ARTIFACTORY_REPO_USER} --password ${env.SELI_ARTIFACTORY_REPO_PASS}
+        - helm repo update ${common.helm-chart-name}
+
+  helm-install:
+    - rule: helm-install-prep
+    - task: helm-install
+      docker-image: adp-helm-kubectl
+      docker-flags: *docker_flags_kube_config
+      cmd: helm upgrade
+        --install ${env.HELM_RELEASE} .bob/${common.helm-chart-name}-internal/${common.helm-chart-name}-${var.version}.tgz
+        --namespace ${env.K8S_NAMESPACE}
+        --set eric-log-shipper.logshipper.autodiscover.namespace=${env.K8S_NAMESPACE}
+        --set imageCredentials.pullSecret=${image-secret}
+        --timeout ${env.HELM_INSTALL_TIMEOUT}
+        --wait
+
+  helm-install-prep:
+    - rule: find-docker-config-basepath
+    - task: create-namespace-if-not-exists
+      docker-image: adp-helm-kubectl
+      docker-flags: *docker_flags_kube_config
+      cmd: kubectl create namespace ${env.K8S_NAMESPACE} || true
+    - task: helm-install-prep
+      docker-image: adp-helm-kubectl
+      docker-flags: *docker_flags_kube_config
+      cmd: kubectl create secret generic ${image-secret}
+        --from-file=.dockerconfigjson=$HOME/.docker/config.json
+        --type=kubernetes.io/dockerconfigjson
+        --namespace ${env.K8S_NAMESPACE} || true
+
+  find-docker-config-basepath:
+    - task: find-docker-config-basepath
+      cmd: dirname $HOME/.docker/config.json > .bob/var.docker-config-basepath

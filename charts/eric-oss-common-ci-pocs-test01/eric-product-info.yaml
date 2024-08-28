@@ -1,0 +1,26 @@
+#
+# COPYRIGHT Ericsson 2021
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+productName: "eric-oss-common-ci-pocs-test01 HELM"
+productNumber: "CXC 201 0000"
+images:
+  eric-oss-common-ci-pocs-test01:
+    productName: "eric-oss-common-ci-pocs-test01 IMAGE"
+    productNumber: "CXC 201 0001"
+    registry: "armdocker.rnd.ericsson.se"
+    repoPath: REPO_PATH
+    name: "eric-oss-common-ci-pocs-test01"
+    tag: VERSION

@@ -1,0 +1,16 @@
+// Read in attributes
+include::../parameters.adoc[]
+
+{service_name} API Documentation
+================================
+:author: <Input author name>
+:doc-name: LIST
+:doc-no: TBD
+:revnumber: A
+:revdate: {sys: date +%Y-%m-%d}
+:approved-by-name: <Input approved by name>
+:approved-by-department: <Input department name>
+
+== API Documentation
+
+Please refer to https://confluence.lmera.ericsson.se/display/AGW/Documentation+Guidelines for more information

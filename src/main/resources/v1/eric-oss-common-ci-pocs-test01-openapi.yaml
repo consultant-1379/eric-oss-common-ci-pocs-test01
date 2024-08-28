@@ -1,0 +1,50 @@
+#
+# COPYRIGHT Ericsson 2021
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+openapi: "3.0.2"
+info:
+  x-api-id: 753a34ee-1eed-4946-a836-0544925f765f
+  x-audience: external-public
+  description: "Micro Service Chassis"
+  version: "0.0.1"
+  title: "Micro Service Chassis"
+  license:
+    name: "COPYRIGHT Ericsson 2021"
+    url: "https://www.ericsson.com/en/legal"
+  termsOfService: "https://www.ericsson.com/en/legal"
+  contact:
+    email: "Team Quaranteam<PDLDUNQUAR@pdl.internal.ericsson.com>"
+tags:
+  - name: "sample"
+    description: "Sample tag for demo purposes"
+paths:
+    /v1/sample:
+      get:
+        tags:
+          - "sample"
+        summary: "Returns a static response"
+        operationId: "sample"
+        responses:
+          "200":
+            description: "OK"
+            content:
+              application/json:
+                schema:
+                  type: "string"
+          "404":
+            description: "Not Found"
+          default:
+            description: "Internal Server Error"

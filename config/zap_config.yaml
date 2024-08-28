@@ -1,0 +1,42 @@
+#
+# COPYRIGHT Ericsson 2023
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: 2.0
+
+zapConfig:
+  baseUrl: "http://eric-oss-common-ci-pocs-test01:8080"
+  scanType: "full"
+  config_dir: "generated/configs/zap-config"
+  globalConfig:
+  endpoints:
+    - name: "sample"
+      url: "/v1/sample"
+      config:
+        - id: "10021"
+          action: "IGNORE"
+          message: "Warning: X-Content-Type-Options Header Missing"
+        - id: "40042"
+          action: "IGNORE"
+          message: "Warning: Spring Actuator Information Leak"
+  report:
+    dir: "build/va-reports/zap-reports"
+    format:
+      - html
+      - json
+      - md
+      - xml
+  properties:
+    zap_container_port: 9625

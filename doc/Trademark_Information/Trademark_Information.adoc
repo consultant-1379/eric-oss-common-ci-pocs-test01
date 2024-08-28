@@ -1,0 +1,21 @@
+// Read in attributes
+include::../parameters.adoc[]
+
+{service_name} Trademark Information
+====================================
+:author: <Input author name>
+:doc-name: LIST
+:doc-no: TBD
+:revnumber: A
+:revdate: {sys: date +%Y-%m-%d}
+:approved-by-name: <Input approved by name>
+:approved-by-department: <Input department name>
+
+== Trademarks Used in Library
+
+The trademarks used in this library, and their respective owners, are as follows:
+
+* *Artifactory* is the trademark or registered trademark of JFrog Ltd.
+* *Docker* is the trademark or registered trademark of Docker, Inc.
+* *Ericsson* is the trademark or registered trademark of Telefonaktiebolaget LM Ericsson.
+* *Kubernetes* is the trademark or registered trademark of The Linux Foundation.

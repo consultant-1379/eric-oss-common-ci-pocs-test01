@@ -1,0 +1,61 @@
+#
+# COPYRIGHT Ericsson 2021
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+modelVersion: 2.0
+
+properties:
+    # Microservice artifactID
+  - project-artifact-id: eric-oss-common-ci-pocs-test01
+    # Microservice helm chart name
+  - helm-chart-name: eric-oss-common-ci-pocs-test01
+    # Microservice docker image name
+  - docker-image-name: eric-oss-common-ci-pocs-test01
+    # Path to YAML file containing all needed information about product structure to release in PRIM
+  - dpraf-config-file: 'ci_config/dpraf_config.yaml'
+    # Local folder where the dpraf output is generated based on dpraf-config-file during execution of adp-prim-release rule
+  - dpraf-output-dir: 'build/dpraf-output'
+    # Configuration file for EriDoc documents
+  - eridoc-config: "ci_config/eridoc_config.yaml"
+    # Static information for PRI
+  - pri-manual-input: "ci_config/pri_manual_input.json"
+    # Product extended name in JIRA
+  - jira-component-name: "Bob"
+    # Gerrit repository name
+  - gerrit-repo-name: OSS/com.ericsson.oss.ci.test/eric-oss-common-ci-pocs-test01
+    # Gerrit repository URL
+  - gerrit-url: "https://gerrit.ericsson.se/plugins/gitiles/OSS/com.ericsson.oss.ci.test/eric-oss-common-ci-pocs-test01/"
+    # Image product number
+  - image-product-number: "CXC90001"
+    # FOSSA team name
+  - fossa-team-name: "eric-oss-hummingbirds"
+    # cbos image repo path
+  - cbos-image-repo: armdocker.rnd.ericsson.se/proj-ldc/common_base_os_release
+    # cbos name
+  - cbos-image-name: sles
+    # cbos version
+  - cbos-image-version: 5.17.0-9
+    # eridoc doc to pdf config path
+  - eridoc-doc-to-pdf: config/docs_pdf_config.yaml
+    # eridoc stylesheet path
+  - eridoc-stylesheet: doc/stylesheet.css
+    # eridoc config path
+  - eridoc-config: config/eridoc_config.yaml
+    # open API spec
+  - open_api_spec_directory: src/main/resources/v1
+    # Directory where dependencies.yaml is generated or updated
+  - ci-artifacts-directory: generated/dependencies
+    # Directory where dependencies-3pp.yaml and dependencies-metadata.yaml are stored
+  - dependencies-files-folder: ci-cd/config/dependencies

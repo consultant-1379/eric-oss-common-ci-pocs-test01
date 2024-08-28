@@ -1,0 +1,31 @@
+#
+# COPYRIGHT Ericsson 2023
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+repository: eridoca
+documents:
+  # Properties of the documnet
+  - title: ""   # Title of the document
+    folderId:   # Id of the folder where the document gets uploaded
+    file: ""   # Path of the document
+    class-prefix: ""   # Class-prefix of the document
+    decimal-class: ""   # Decimal-class of the document
+    individual-number: ""   # Product number/Individual number
+    strategy: ""   # Strategy whether latest or ordinal. By default latest
+    eri_document_type: ""   # Document type
+    format: ""   # Document format
+    eri_audience: ""   # Document Audience
+    eri_category: ""   # Business Category
+    eri_conf_class: ""   # Confidentiality class

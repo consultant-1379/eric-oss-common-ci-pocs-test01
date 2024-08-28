@@ -1,0 +1,52 @@
+#
+# COPYRIGHT Ericsson 2021
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+#Metrics related configurations
+management.endpoint.metrics.enabled: "true"
+management.endpoints.web.exposure.include: "*"
+management.endpoint.prometheus.enabled: "true"
+management.metrics.export.prometheus.enabled: "true"
+management.metrics.web.server.auto-time-requests: "true"
+management.info.env.enabled: "true"
+
+#opentracing.jaeger.enabled: "true"
+
+# Remove H2 from compile scope
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+endpoints.health.sensitive: "false"
+info.app.name: '@name@'
+info.app.description: Microservice chassis app
+info.app.version: '@version@'
+info.app.legal: "COPYRIGHT Ericsson 2021 -
+ The copyright to the computer program(s) herein is the property of
+ Ericsson Inc. The programs may be used and/or copied only with written
+ permission from Ericsson Inc. or in accordance with the terms and
+ conditions stipulated in the agreement/contract under which the
+ program(s) have been supplied."
+
+#See more details about pattern layout: https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html
+#See more details about logging.pattern.level : https://docs.spring.io/spring-boot/docs/2.5.2/reference/html/features.html#features.logging.custom-log-configuration
+#logging.pattern.level: "%5p [%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}][%X{userName}]"
+
+#Set the stubrunner credentials:
+#stubrunner.username: <LAN SIGNUM ID>
+#stubrunner.password: <LAN encripted PWD or JFrog API Key>
+stubrunner.username: ${SELI_ARTIFACTORY_REPO_USER}
+stubrunner.password: ${SELI_ARTIFACTORY_REPO_PASS}

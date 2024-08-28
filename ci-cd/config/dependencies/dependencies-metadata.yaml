@@ -1,0 +1,767 @@
+modelVersion: '2.0'
+dependencies:
+- ID: regex_matcher:.*
+  linking: Classpath
+- ID: ch.qos.logback
+  selected_license: EPL-1.0
+- ID: com.fasterxml:classmate
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: com.github.luben:zstd-jni
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: com.google.code.findbugs:jsr305
+  licenses:
+    - Apache-2.0
+  selected_license: Apache-2.0
+  bazaar:
+    stako_decision_reason: ESW4
+- ID: com.sun.activation:jakarta.activation
+  licenses:
+    - FAL 115 9000
+  selected_license: FAL 115 9000
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: commons-codec:commons-codec
+  bazaar:
+    stako_decision_reason: ESW3
+- ID:  regex_matcher:io.micrometer:micrometer.*\+1.8.6
+  bazaar:
+    prim: 69/CTX1023759
+  selected_license: Apache-2.0
+- ID: io.netty:netty
+  bazaar:
+    stako_decision_reason: ESW3
+    prim: 128/CAX1054544
+  selected_license: Apache-2.0
+- ID: regex_matcher:io.projectreactor:reactor-core.*\+3.4.18
+  bazaar:
+    prim: 57/CTX1021254
+- ID: io.projectreactor.netty:reactor
+  bazaar:
+    prim: 42/CTX1024915
+- ID: io.prometheus:simpleclient
+  selected_license: Apache-2.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: jakarta.annotation:jakarta.annotation-api
+  selected_license: EPL-2.0
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: jakarta.validation:jakarta.validation-api
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: javax.annotation:javax.annotation-api
+  selected_license: CDDL-1.1
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: javax.validation:validation-api
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: net.logstash.logback:logstash-logback-encoder
+  selected_license: Apache-2.0
+- ID: org.apache
+  selected_license: Apache-2.0
+- ID: org.apache.httpcomponents
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.apache.kafka
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.apache.tomcat
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.aspectj:aspectjweaver
+  selected_license: EPL-1.0
+- ID: org.bouncycastle:bcpkix-jdk15on
+  selected_license: MIT
+- ID: org.bouncycastle:bcprov-jdk15on
+  selected_license: MIT
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.bouncycastle:bcutil-jdk15on
+  bazaar:
+    prim: 2/CTX1032639
+  licenses:
+  - MIT
+  selected_license: MIT
+- ID: org.hdrhistogram:HdrHistogram
+  licenses:
+  - BSD-2-Clause
+  selected_license: BSD-2-Clause
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.hibernate.validator:hibernate-validator
+  bazaar:
+    prim: 54/CAX1053451
+    stako_decision_reason: ESW3
+  selected_license: Apache-2.0
+- ID: org.jboss.logging:jboss-logging
+  bazaar:
+    prim: 17/CAX1056042
+- ID: org.keycloak:keycloak
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.latencyutils:LatencyUtils
+  licenses:
+  - BSD-2-Clause
+  selected_license: BSD-2-Clause
+  bazaar:
+    stako_decision_reason: ESW4
+- ID: org.lz4:lz4-java
+  bazaar:
+    prim: 3/CAX1059993
+    stako_decision_reason: ESW3
+- ID: org.mapstruct:mapstruct
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.openapitools:jackson-databind-nullable
+  bazaar:
+    prim: 2/CTX1027927
+  licenses:
+  - Apache-2.0
+  linking: Classpath
+  selected_license: Apache-2.0
+- ID: com.fasterxml.jackson.core:jackson-databind+2.13.1
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: com.fasterxml.jackson.datatype:jackson-datatype-jdk8+2.13.3
+  bazaar:
+    prim: 36/CAX1058808
+- ID: com.fasterxml.jackson.core:jackson-core
+  selected_license: Apache-2.0
+- ID: org.reactivestreams:reactive-streams
+  licenses:
+  - FAL 115 9998
+  selected_license: FAL 115 9998
+  bazaar:
+    prim: 4/CTX1020853
+    stako_decision_reason: ESW3
+- ID: regex_matcher:org.springframework.boot:spring-boot.*\+2.6.8
+  bazaar:
+    prim: 140/CAX1058168
+    stako_decision_reason: ESW3
+  selected_license: Apache-2.0
+- ID: regex_matcher:org.springframework.kafka:.*\+2.8.6
+  bazaar:
+    prim: 66/CTX1020156
+- ID: org.springframework.security
+  bazaar:
+    prim: 119/CAX1053020
+    stako_decision_reason: ESW3
+  selected_license: Apache-2.0
+- ID: org.yaml:snakeyaml
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.zalando
+  licenses:
+  - MIT
+  selected_license: MIT
+- ID: org.zalando:jackson-datatype-problem
+  bazaar:
+    prim: 4/CTX1027604
+- ID: org.zalando:problem-spring-common
+  bazaar:
+    prim: 5/CTX1022871
+- ID: org.zalando:problem-violations
+  bazaar:
+    prim: 5/CTX1022871
+- ID: org.xerial.snappy:snappy-java+1.1.8.1
+  bazaar:
+    stako_decision_reason: "Deep dependency brought by spring-kafka/kafka-clients"
+- ID: org.springframework.cloud:spring-cloud-context+3.1.0
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.zalando:faux-pas+0.9.0
+  bazaar:
+    stako_decision_reason: ESW3
+- ID: org.springframework.boot:spring-boot-starter-data-jpa+2.7.3
+  bazaar:
+    prim: 149/CAX1058168
+- ID: io.zipkin.aws:brave-propagation-aws+0.21.3
+  bazaar:
+    prim: 1/CTX1031159
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-context-slf4j+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-http+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-httpasyncclient+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-httpclient+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-jms+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-kafka-clients+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-kafka-streams+5.13.7
+  bazaar:
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-messaging+5.13.7
+  bazaar:
+    register: 'no'
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-mongodb+5.13.7
+  bazaar:
+    register: 'no'
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-rpc+5.13.7
+  bazaar:
+    register: 'no'
+    prim: 8/CTX1031144
+- ID: io.zipkin.brave:brave-instrumentation-spring-rabbit+5.13.7
+  bazaar:
+    register: 'no'
+    prim: 8/CTX1031144
+- ID: io.zipkin.reporter2:zipkin-reporter+2.16.3
+  bazaar:
+    register: 'no'
+    prim: 3/CTX1031147
+    stako_decision_reason: allowed
+- ID: io.zipkin.reporter2:zipkin-reporter-metrics-micrometer+2.16.3
+  bazaar:
+    register: 'no'
+    prim: 3/CTX1031147
+    stako_decision_reason: allowed
+- ID: jakarta.persistence:jakarta.persistence-api+2.2.3
+  bazaar:
+    register: 'no'
+    prim: 1/CTX1026862
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: jakarta.transaction:jakarta.transaction-api+1.3.3
+  bazaar:
+    register: 'no'
+    prim: 2/CTX1026879
+    stako_decision_reason: allowed
+  licenses:
+    - Apache-2.0
+    - EPL-2.0
+  selected_license: EPL-2.0
+- ID: org.hibernate:hibernate-core+5.6.9.Final
+  bazaar:
+    register: 'no'
+    prim: 111/CAX1054695
+- ID: org.jboss:jandex+2.4.2.Final
+  bazaar:
+    register: 'no'
+    prim: 14/CAX1057079
+    stako_decision_reason: allowed
+- ID: org.springframework.cloud:spring-cloud-sleuth-api+3.1.1
+  bazaar:
+    register: 'no'
+    prim: 13/CTX1028605
+- ID: org.springframework.cloud:spring-cloud-sleuth-autoconfigure+3.1.1
+  bazaar:
+    register: 'no'
+    prim: 13/CTX1028605
+- ID: org.springframework.cloud:spring-cloud-sleuth-brave+3.1.1
+  bazaar:
+    register: 'no'
+    prim: 13/CTX1028605
+- ID: org.springframework.cloud:spring-cloud-sleuth-instrumentation+3.1.1
+  bazaar:
+    register: 'no'
+    prim: 13/CTX1028605
+- ID: org.springframework.cloud:spring-cloud-starter-sleuth+3.1.1
+  bazaar:
+    register: 'no'
+    prim: 13/CTX1028605
+- ID: org.springframework.plugin:spring-plugin-core+2.0.0.RELEASE
+  bazaar:
+    register: 'no'
+    prim: 2/CAX1058434
+- ID: io.swagger:swagger-models+1.5.20
+  bazaar:
+    stako_decision_reason: allowed
+  licenses:
+    - Apache-2.0
+  selected_license: Apache-2.0
+- ID: org.glassfish.jaxb:jaxb-runtime+2.3.6
+  licenses:
+  - Apache-2.0
+  - BSD-3-Clause
+  - MIT
+  - SAX-PD
+  - CDDL-1.0
+  - GPL-2.0-with-classpath-exception
+  selected_license: GPL-2.0-with-classpath-exception
+- ID: org.glassfish.jaxb:txw2+2.3.6
+  bazaar:
+    stako_decision_reason: allowed
+  licenses:
+  - Apache-2.0
+  - BSD-3-Clause
+  - MIT
+  - SAX-PD
+  - CDDL-1.1
+  - GPL-2.0-only
+  selected_license: CDDL-1.1
+- ID: org.hibernate.common:hibernate-commons-annotations+5.1.2.Final
+  bazaar:
+    stako_decision_reason: allowed
+  licenses:
+    - LGPL-2.1-only
+  selected_license: LGPL-2.1-only
+- ID: ch.qos.logback:logback-classic+1.2.11
+  bazaar:
+    stako_decision_reason: allowed
+- ID: com.sun.istack:istack-commons-runtime+3.0.12
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: com.zaxxer:HikariCP+4.0.3
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.github.classgraph:classgraph+4.8.83
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: io.springfox:springfox-core+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-schema+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-spi+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-spring-web+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-spring-webflux+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-spring-webmvc+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-swagger-common+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-swagger-ui+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.swagger.core.v3:swagger-annotations+2.1.2
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.swagger:swagger-annotations+1.5.20
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.zipkin.zipkin2:zipkin+2.23.2
+  bazaar:
+    stako_decision_reason: allowed
+- ID: jakarta.activation:jakarta.activation-api+1.2.2
+  bazaar:
+    stako_decision_reason: allowed
+- ID: jakarta.ws.rs:jakarta.ws.rs-api+2.1.6
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: Apache-2.0
+- ID: jakarta.xml.bind:jakarta.xml.bind-api+2.3.3
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: net.bytebuddy:byte-buddy+1.11.22
+  bazaar:
+    stako_decision_reason: allowed
+- ID: net.logstash.logback:logstash-logback-encoder+6.1
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.aspectj:aspectjrt+1.9.7
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: EPL-1.0
+- ID: org.bouncycastle:bcpkix-jdk15on+1.68
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.hk2.external:aopalliance-repackaged+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2.external:jakarta.inject+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: Apache-2.0
+- ID: org.glassfish.hk2:class-model+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-runlevel+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-api+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-core+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-locator+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:spring-bridge+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:hk2-utils+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.hk2:osgi-resource-locator+1.0.3
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: EPL-1.0
+- ID: org.glassfish.hk2:hk2+2.6.1
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: org.glassfish.jersey.containers:jersey-container-servlet+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.containers:jersey-container-servlet-core+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.core:jersey-client+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.core:jersey-common+2.35
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.core:jersey-server+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.ext:jersey-bean-validation+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.ext:jersey-entity-filtering+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.ext:jersey-spring5+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.inject:jersey-hk2+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.glassfish.jersey.media:jersey-media-json-jackson+2.35
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-jersey+2.6.8
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.javassist:javassist+3.25.0-GA
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.ow2.asm:asm-commons+7.1
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.ow2.asm:asm-tree+7.1
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.ow2.asm:asm-util+7.1
+  bazaar:
+    stako_decision_reason: allowed
+- ID: regex_matcher:org.springframework:spring.*\+5.3.20
+  bazaar:
+    stako_decision_reason: allowed
+    prim: 185/CAX1053104
+  selected_license: Apache-2.0
+- ID: com.fasterxml.jackson.core:jackson-annotations+2.12.6
+  bazaar:
+    stako_decision_reason: allowed
+- ID: com.fasterxml.jackson.core:jackson-core+2.12.6
+  bazaar:
+    stako_decision_reason: allowed
+- ID: com.fasterxml.jackson.datatype:jackson-datatype-jdk8+2.12.6
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.micrometer:micrometer-core+1.7.6
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: io.zipkin.brave:brave+5.13.2
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-context-slf4j+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: com.fasterxml.jackson.core:jackson-databind+2.12.6
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.micrometer:micrometer-registry-prometheus+1.7.6
+  bazaar:
+    stako_decision_reason: allowed
+- ID: net.bytebuddy:byte-buddy+1.10.22
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: Apache-2.0
+- ID: org.dom4j:dom4j+2.1.3
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-2-Clause
+- ID: org.glassfish.jersey.containers:jersey-container-servlet+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.containers:jersey-container-servlet-core+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.core:jersey-client+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.core:jersey-server+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.ext:jersey-bean-validation+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.ext:jersey-entity-filtering+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.ext:jersey-spring5+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.inject:jersey-hk2+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.glassfish.jersey.media:jersey-media-json-jackson+2.33
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: MIT
+- ID: org.springframework.boot:spring-boot-autoconfigure+2.5.12
+  selected_license: Apache-2.0
+- ID: org.springframework.cloud:spring-cloud-starter+3.0.3
+  additional_info:
+    fossa-attribution:
+      licenses: []
+  bazaar:
+    stako_decision_reason: allowed
+  licenses:
+  - Apache-2.0
+  selected_license: Apache-2.0
+- ID: org.springframework:spring-core+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+  selected_license: BSD-3-Clause
+- ID: io.zipkin.brave:brave-instrumentation-http+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-httpasyncclient+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-httpclient+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-jms+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-kafka-clients+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-kafka-streams+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-messaging+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-mongodb+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-rpc+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.brave:brave-instrumentation-spring-rabbit+5.13.2
+  bazaar:
+    prim: 1/CTX1031144
+    stako_decision_reason: allowed
+- ID: io.zipkin.reporter2:zipkin-reporter+2.16.1
+  bazaar:
+    prim: 1/CTX1031147
+    stako_decision_reason: allowed
+- ID: io.zipkin.reporter2:zipkin-reporter-metrics-micrometer+2.16.1
+  bazaar:
+    prim: 1/CTX1031147
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-data-jpa+2.5.12
+  bazaar:
+    prim: 136/CAX1058168
+- ID: antlr:antlr+2.7.7
+  bazaar:
+    stako_decision_reason: allowed
+- ID: ch.qos.logback:logback-core+1.2.11
+  bazaar:
+    stako_decision_reason: allowed
+- ID: com.fasterxml.jackson.datatype:jackson-datatype-jsr310+2.12.6
+  bazaar:
+    stako_decision_reason: allowed
+- ID: com.fasterxml:classmate+1.5.1
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.springfox:springfox-swagger2+3.0.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: io.zipkin.zipkin2:zipkin+2.23.0
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-actuator+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-actuator-autoconfigure+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-autoconfigure+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-actuator+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-aop+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-data-jpa+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-jdbc+2.5.12
+  bazaar:
+    prim: 136/CAX1058168
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: org.springframework.boot:spring-boot-starter-json+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-logging+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-tomcat+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-validation+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-web+2.5.12
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.cloud:spring-cloud-commons+3.0.3
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.cloud:spring-cloud-context+3.0.3
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.cloud:spring-cloud-sleuth-api+3.0.3
+  bazaar:
+    prim: 30/CAX1059260
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: org.springframework.cloud:spring-cloud-sleuth-autoconfigure+3.0.3
+  bazaar:
+    prim: 30/CAX1059260
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: org.springframework.cloud:spring-cloud-sleuth-brave+3.0.3
+  bazaar:
+    prim: 30/CAX1059260
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: org.springframework.cloud:spring-cloud-sleuth-instrumentation+3.0.3
+  bazaar:
+    prim: 30/CAX1059260
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: org.springframework.cloud:spring-cloud-starter-sleuth+3.0.3
+  bazaar:
+    prim: 30/CAX1059260
+    src_download_link: https://lib.sw.ericsson.net/lib/artifacts/ff488aae-a0f8-4416-a75b-d1b166e7697b/file
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: org.springframework.data:spring-data-commons+2.5.10
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.data:spring-data-jpa+2.5.10
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.plugin:spring-plugin-core+2.0.0.RELEASE
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.plugin:spring-plugin-metadata+2.0.0.RELEASE
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-aop+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-aspects+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-beans+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-context+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-expression+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-jcl+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-jdbc+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-orm+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-tx+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-web+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework:spring-webmvc+5.3.18
+  bazaar:
+    stako_decision_reason: allowed
+- ID: org.springframework.boot:spring-boot-starter-jersey+2.5.12
+  bazaar:
+    prim: 136/CAX1058168
+    stako_decision_reason: allowed
+    stako: ESW3
+  mimer:
+    product_number: CAX1058168
+- ID: org.springframework.security:spring-security-crypto+5.5.5
+  bazaar:
+    prim: 117/CAX1053020
+    stako_decision_reason: allowed
+    stako: ESW3
+- ID: com.fasterxml.jackson.core:jackson-annotations+2.13.5
+  bazaar:
+    stako_decision_reason: allowed

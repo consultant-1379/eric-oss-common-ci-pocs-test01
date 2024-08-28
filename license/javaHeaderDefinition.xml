@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ COPYRIGHT Ericsson 2021
+ ~
+ ~
+ ~
+ ~ The copyright to the computer program(s) herein is the property of
+ ~
+ ~ Ericsson Inc. The programs may be used and/or copied only with written
+ ~
+ ~ permission from Ericsson Inc. or in accordance with the terms and
+ ~
+ ~ conditions stipulated in the agreement/contract under which the
+ ~
+ ~ program(s) have been supplied.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<additionalHeaders>
+  <javadoc_style>
+    <firstLine>/*******************************************************************************</firstLine>
+    <beforeEachLine> * </beforeEachLine>
+    <endLine> ******************************************************************************/</endLine>
+    <!--skipLine></skipLine-->
+    <firstLineDetectionPattern>(\s|\t)*/\*.*$</firstLineDetectionPattern>
+    <lastLineDetectionPattern>.*\*/(\s|\t)*$</lastLineDetectionPattern>
+    <allowBlankLines>false</allowBlankLines>
+    <isMultiline>true</isMultiline>
+    <padLines>false</padLines>
+  </javadoc_style>
+</additionalHeaders>

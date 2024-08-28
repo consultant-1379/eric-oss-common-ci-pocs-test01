@@ -1,0 +1,212 @@
+#
+# COPYRIGHT Ericsson 2021
+#
+#
+#
+# The copyright to the computer program(s) herein is the property of
+#
+# Ericsson Inc. The programs may be used and/or copied only with written
+#
+# permission from Ericsson Inc. or in accordance with the terms and
+#
+# conditions stipulated in the agreement/contract under which the
+#
+# program(s) have been supplied.
+#
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "eric-oss-common-ci-pocs-test01.fullname" . }}
+  labels:
+  {{- include "eric-oss-common-ci-pocs-test01.labels" . | nindent 4 }}
+  annotations:
+  {{- include "eric-oss-common-ci-pocs-test01.annotations" . | nindent 4 }}
+spec:
+{{- if not .Values.autoScaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "eric-oss-common-ci-pocs-test01.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  strategy:
+    type: {{ .Values.updateStrategy.type | quote }}
+    {{- if and (eq .Values.updateStrategy.type "RollingUpdate") .Values.updateStrategy.rollingUpdate }}
+    rollingUpdate:
+      maxUnavailable: {{ .Values.updateStrategy.rollingUpdate.maxUnavailable }}
+      maxSurge: {{ .Values.updateStrategy.rollingUpdate.maxSurge }}
+    {{- end }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "eric-oss-common-ci-pocs-test01.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ include "eric-oss-common-ci-pocs-test01.version" . }}
+{{- include "eric-oss-common-ci-pocs-test01.directStreamingLabel" . | indent 8 }}
+      annotations:
+{{- include "eric-oss-common-ci-pocs-test01.prometheus" . | nindent 8 }}
+{{- include "eric-oss-common-ci-pocs-test01.product-info" . | indent 8 }}
+{{- include "eric-oss-common-ci-pocs-test01.config-annotations" . | indent 8 }}
+{{- include "eric-oss-common-ci-pocs-test01.container-annotations" . | indent 8 }}
+    spec:
+      {{- if include "eric-oss-common-ci-pocs-test01.pullSecret" . }}
+      imagePullSecrets:
+        - name: {{ include "eric-oss-common-ci-pocs-test01.pullSecret" . | quote}}
+      {{- end }}
+      serviceAccountName: {{ template "eric-oss-common-ci-pocs-test01.fullname" . }}
+      securityContext:
+        fsGroup: {{ include "eric-oss-common-ci-pocs-test01.fsGroup.coordinated" . }}
+        {{- include "eric-oss-common-ci-pocs-test01.seccomp-profile" . | indent 8 }}
+      volumes:
+        - name: tmp-volume
+          emptyDir: {}
+        - name: config-volume
+          configMap:
+            defaultMode: 493
+            name: {{ include "eric-oss-common-ci-pocs-test01.name" . }}-configmap
+      containers:
+        - name: eric-oss-common-ci-pocs-test01
+          image: {{ template "eric-oss-common-ci-pocs-test01.mainImagePath" . }}
+          imagePullPolicy: {{ template "eric-oss-common-ci-pocs-test01.registryImagePullPolicy" . }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - all
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp-volume
+            - name: config-volume
+              mountPath: /config
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "initialDelaySeconds") }}
+            {{ print "initialDelaySeconds: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "initialDelaySeconds") }}
+          {{- end }}
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "failureThreshold") }}
+            {{ print "failureThreshold: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "failureThreshold") }}
+          {{- end }}
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "periodSeconds") }}
+            {{ print "periodSeconds: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "periodSeconds") }}
+          {{- end }}
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "timeoutSeconds") }}
+            {{ print "timeoutSeconds: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "livenessProbe" "timeoutSeconds") }}
+          {{- end }}
+            httpGet:
+              path: /actuator/health
+              port: http
+          readinessProbe:
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "initialDelaySeconds") }}
+            {{ print "initialDelaySeconds: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "initialDelaySeconds") }}
+          {{- end }}
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "failureThreshold") }}
+            {{ print "failureThreshold: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "failureThreshold") }}
+          {{- end }}
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "periodSeconds") }}
+            {{ print "periodSeconds: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "periodSeconds") }}
+          {{- end }}
+          {{- if (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "timeoutSeconds") }}
+            {{ print "timeoutSeconds: " (index .Values "probes" "eric-oss-common-ci-pocs-test01" "readinessProbe" "timeoutSeconds") }}
+          {{- end }}
+            httpGet:
+              path: /actuator/health
+              port: http
+          env:
+          - name: SERVICE_ID
+            value: {{ include "eric-oss-common-ci-pocs-test01.name" . | quote}}
+          - name: JAVA_OPTS
+            value: {{ include "eric-oss-common-ci-pocs-test01.jvmHeapSettings" . }}
+          - name: TZ
+            value: {{ template "eric-oss-common-ci-pocs-test01.timezone" . }}
+      {{- if .Values.global }}
+        {{- if .Values.global.security }}
+          {{- if .Values.global.security.tls }}
+            {{- if .Values.global.security.tls.enabled }}
+          - name: CONNECT_MODE
+            value: "tls"
+            {{- if (eq .Values.service.endpoints.chassisapi.tls.enforced "required") }}
+          - name: TLS_MODE
+            value: "only_tls"
+            {{- if (eq .Values.service.endpoints.chassisapi.tls.verifyClientCertificate "required") }}
+          - name: TLS_CA
+            value: "ca_path"
+            {{- end }}
+            {{- end }}
+            {{- end }}
+          {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- include "eric-oss-common-ci-pocs-test01.loggingEnv" . | indent 10 }}
+          resources:
+            requests:
+            {{- if (index .Values "resources" "eric-oss-common-ci-pocs-test01" "requests" "cpu") }}
+              cpu: {{ (index .Values "resources" "eric-oss-common-ci-pocs-test01" "requests" "cpu" | quote) }}
+            {{- end }}
+            {{- if (index .Values "resources" "eric-oss-common-ci-pocs-test01" "requests" "memory") }}
+              memory: {{ (index .Values "resources" "eric-oss-common-ci-pocs-test01" "requests" "memory" | quote) }}
+            {{- end }}
+            {{- if (index .Values "resources" "eric-oss-common-ci-pocs-test01" "requests" "ephemeral-storage") }}
+            {{ println "  ephemeral-storage:" (index .Values "resources" "eric-oss-common-ci-pocs-test01" "requests" "ephemeral-storage" | quote) }}
+            {{- end }}
+            limits:
+            {{- if (index .Values "resources" "eric-oss-common-ci-pocs-test01" "limits" "cpu") }}
+              cpu: {{ (index .Values "resources" "eric-oss-common-ci-pocs-test01" "limits" "cpu" | quote) }}
+            {{- end }}
+            {{- if (index .Values "resources" "eric-oss-common-ci-pocs-test01" "limits" "memory") }}
+              memory: {{ (index .Values "resources" "eric-oss-common-ci-pocs-test01" "limits" "memory" | quote) }}
+            {{- end }}
+            {{- if (index .Values "resources" "eric-oss-common-ci-pocs-test01" "limits" "ephemeral-storage") }}
+            {{ println "  ephemeral-storage:" (index .Values "resources" "eric-oss-common-ci-pocs-test01" "limits" "ephemeral-storage" | quote) }}
+            {{- end }}
+      nodeSelector: {{ include "eric-oss-common-ci-pocs-test01.nodeSelector" . | nindent 6 -}}
+
+      {{- if .Values.terminationGracePeriodSeconds }}
+      terminationGracePeriodSeconds:
+        {{- include "eric-oss-common-ci-pocs-test01.terminationGracePeriodSeconds" . | nindent 8 }}
+      {{- end }}
+
+      {{- if .Values.tolerations }}
+      tolerations:
+        {{- include "eric-oss-common-ci-pocs-test01.tolerations" . | nindent 8 }}
+      {{- end }}
+
+      {{- if (index .Values "podPriority" "eric-oss-common-ci-pocs-test01" "priorityClassName") }}
+      priorityClassName: {{ (index .Values "podPriority" "eric-oss-common-ci-pocs-test01" "priorityClassName") }}
+      {{- end }}
+
+      {{- with .Values.topologySpreadConstraints.deployment }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+      {{- if eq .Values.affinity.podAntiAffinity "hard" }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{ include "eric-oss-common-ci-pocs-test01.name" . }}
+            topologyKey: "kubernetes.io/hostname"
+      {{- else if eq .Values.affinity.podAntiAffinity  "soft" }}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - {{ include "eric-oss-common-ci-pocs-test01.name" . }}
+              topologyKey: "kubernetes.io/hostname"
+      {{- end }}
